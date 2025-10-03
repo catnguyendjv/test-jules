@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import './Login.css';
 
 const Login = ({ onLogin }) => {
-  const [url, setUrl] = useState('');
   const [apiKey, setApiKey] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (url && apiKey) {
-      onLogin({ url, apiKey });
+    if (apiKey) {
+      onLogin(apiKey);
     }
   };
 
@@ -16,16 +15,6 @@ const Login = ({ onLogin }) => {
     <div className="login-container">
       <h2>Connect to Redmine</h2>
       <form onSubmit={handleSubmit}>
-        <label>
-          Redmine URL:
-          <input
-            type="text"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-            placeholder="https://your-redmine-instance.com"
-            required
-          />
-        </label>
         <label>
           API Key:
           <input

@@ -5,16 +5,16 @@ import Login from './components/Login';
 import { initApi } from './services/redmine';
 
 function App() {
-  const [credentials, setCredentials] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const handleLogin = (creds) => {
-    initApi(creds.url, creds.apiKey);
-    setCredentials(creds);
+  const handleLogin = (apiKey) => {
+    initApi(apiKey);
+    setIsAuthenticated(true);
   };
 
   return (
     <div className="App">
-      {!credentials ? (
+      {!isAuthenticated ? (
         <Login onLogin={handleLogin} />
       ) : (
         <>

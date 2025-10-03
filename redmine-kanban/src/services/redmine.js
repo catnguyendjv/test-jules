@@ -2,9 +2,8 @@ import axios from 'axios';
 
 let redmineApi;
 
-export const initApi = (baseURL, apiKey) => {
+export const initApi = (apiKey) => {
   redmineApi = axios.create({
-    baseURL,
     headers: {
       'X-Redmine-API-Key': apiKey,
       'Content-Type': 'application/json',
